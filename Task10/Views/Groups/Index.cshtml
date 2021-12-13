@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Task10.Models.Group>
+
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<h1>Groups</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@ViewBag.CourseID">Create New</a>
+   
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                <a>CourseName</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a class="link" asp-area="" asp-controller="Students" asp-action="Index" asp-route-id="@item.Id">@item.Name</a>
+            </td>
+            <td>
+                <a>@ViewBag.CourseName</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a class="link" asp-area="" asp-controller="Courses" asp-action="Index">Back to Courses</a>
+<div/>
